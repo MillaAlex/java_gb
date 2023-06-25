@@ -16,12 +16,19 @@ public class Task1 {
      */
     private static int task1(int n, Scanner scanner) {
         int sum = 0;
-        for (int i = 0; i < n - 1; i++) {
+        int count = 0;
+        for (int i = 0; i < n; i++) {
             int n1 = scanner.nextInt();
-            for (var j = 2; j <= n1 / 2; j++) {
-                if (n1 > 1 && n1 % 2 != 0) {
-                    sum += n1;
+            boolean isSimple = true;
+            for (int j = 2; j <= n1 / 2; j++) {
+                if (n1 > 1 && n1 % j == 0) {
+                    isSimple = false;
+                    break;
                 }
+            }
+            if (isSimple) {
+                sum += n1;
+                count++;
             }
         }
         return sum;
